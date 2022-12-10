@@ -64,7 +64,6 @@ COPY --from=frontend-builder /frontend/dist /doccano/backend/client/dist
 RUN python manage.py collectstatic --noinput \
  && chown -R doccano:doccano .
 
-VOLUME /data
 ENV DATABASE_URL="sqlite:////data/doccano.db"
 
 ENV DEBUG="False"
