@@ -2,7 +2,7 @@ ARG PYTHON_VERSION="3.8.13-slim-bullseye"
 ARG NODE_VERSION="16.16-bullseye-slim"
 FROM node:${NODE_VERSION} AS frontend-builder
 
-COPY ../frontend/ /frontend/
+COPY ../frontend/ ../frontend/
 WORKDIR /frontend
 ENV PUBLIC_PATH="/static/_nuxt/"
 # hadolint ignore=DL3008
