@@ -2,7 +2,7 @@ ARG PYTHON_VERSION="3.8.13-slim-bullseye"
 ARG NODE_VERSION="16.16-bullseye-slim"
 FROM node:${NODE_VERSION} AS frontend-builder
 
-COPY frontend/ /frontend/
+COPY /doccano/frontend/ /frontend/
 WORKDIR /frontend
 ENV PUBLIC_PATH="/static/_nuxt/"
 # hadolint ignore=DL3008
@@ -29,7 +29,7 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
-COPY backend/pyproject.toml backend/poetry.lock /tmp/
+COPY /doccano/backend/pyproject.toml /doccano/backend/poetry.lock /tmp/
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN pip install -U --no-cache-dir pip==22.2.2 \
